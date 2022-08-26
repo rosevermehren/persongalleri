@@ -27,7 +27,7 @@
     <template>
       <article>
         <img src="" alt="" />
-        <h2 class="navn"></h2>
+        <h2 class="Navn"></h2>
         <p class="Email"></p>
         <p class="Troende"></p>
       </article>
@@ -43,25 +43,27 @@
         const response = await fetch(endpoint, mereInfo);
         const person = await respons.json();
         console.log(json);
-        vis(dimser);
+        vis(personer);
       }
-      function vis(dimser) {
-        const holder = document.querySelector("holder");
+      function vis(personer) {
+        const holder = document.querySelector("#holder");
         const skabelon = document.querySelector("template").content;
-        dimser.forEach((dims) => {
+        personer.forEach((person) => {
           const klon = skabelon.cloneNode(true);
-          klon.querySelector(".emne").textContent = dims.emne;
-          klon.querySelector(img).src = "billeder/" + dims.billedNavn;
-          klon.querySelector(img).alt = dims.fornavn;
+          klon.querySelector(".Navn").textContent = person.Navn;
+          klon.querySelector("img").src = ".Navn" + person.Navn;
+          klon.querySelector("img").alt = ".Navn".person.Navn;
 
-          klon.querySelector(".pris").textContent = dims.pris;
-          klon.querySelector(".dato").textContent = dims.dato;
+          klon.querySelector(".Email").textContent = person.Email;
+          klon.querySelector(".Navn").textContent = person.Navn;
+          klon.querySelector(".Troende").textContent = person.Troende;
 
           klon.querySelector("article").style.borderRadius = "1em";
 
           holder.appendChild(klon);
         });
       }
+      hentData();
     </script>
   </body>
 </html>
