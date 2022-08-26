@@ -4,7 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Persongalleri</title>
+    <style>
+      #holder {
+        display: grid;
+        grid-template-columns: repeat (4, 1fr);
+        gap:1rem;
+      }
+      article {
+        border: 1px solid blue;
+        padding: 1rem;
+      }
+      img {
+        max-width: 60%
+        aspect-ratio: 1/1;
+        object-fit:cover;
+      }
+    </style>
   </head>
-  <body></body>
+  <h1>Persongalleri</h1>
+  <body>
+    <main id="holder"></main>
+    <template>
+      <article>
+        <img src="" alt="" />
+        <h2 class="navn"></h2>
+        <p class="pris"></p>
+        <p class="modtaget"></p>
+      </article>
+    </template>
+    <script>
+      const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+      const mereinfo = {
+        headers: {
+          "a-apikey": "600fe9211346a1524ff12e31",
+        },
+      };
+    </script>
+  </body>
 </html>
