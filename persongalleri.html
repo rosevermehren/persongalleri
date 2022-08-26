@@ -9,16 +9,15 @@
       #holder {
         display: grid;
         grid-template-columns: repeat (4, 1fr);
-        gap:1rem;
+        gap: 1rem;
       }
       article {
         border: 1px solid blue;
         padding: 1rem;
       }
       img {
-        max-width: 60%
-        aspect-ratio: 1/1;
-        object-fit:cover;
+        max-width: 60% aspect-ratio 1/1;
+        object-fit: cover;
       }
     </style>
   </head>
@@ -29,8 +28,8 @@
       <article>
         <img src="" alt="" />
         <h2 class="navn"></h2>
-        <p class="pris"></p>
-        <p class="modtaget"></p>
+        <p class="Email"></p>
+        <p class="Troende"></p>
       </article>
     </template>
     <script>
@@ -40,6 +39,29 @@
           "a-apikey": "600fe9211346a1524ff12e31",
         },
       };
+      async function hentData() {
+        const response = await fetch(endpoint, mereInfo);
+        const person = await respons.json();
+        console.log(json);
+        vis(dimser);
+      }
+      function vis(dimser) {
+        const holder = document.querySelector("holder");
+        const skabelon = document.querySelector("template").content;
+        dimser.forEach((dims) => {
+          const klon = skabelon.cloneNode(true);
+          klon.querySelector(".emne").textContent = dims.emne;
+          klon.querySelector(img).src = "billeder/" + dims.billedNavn;
+          klon.querySelector(img).alt = dims.fornavn;
+
+          klon.querySelector(".pris").textContent = dims.pris;
+          klon.querySelector(".dato").textContent = dims.dato;
+
+          klon.querySelector("article").style.borderRadius = "1em";
+
+          holder.appendChild(klon);
+        });
+      }
     </script>
   </body>
 </html>
