@@ -16,7 +16,8 @@
         padding: 1rem;
       }
       img {
-        max-width: 60% aspect-ratio 1/1;
+        max-width: 60%;
+        aspect-ratio: 1/1;
         object-fit: cover;
       }
     </style>
@@ -26,23 +27,23 @@
     <main id="holder"></main>
     <template>
       <article>
-        <img src="" alt="" />
-        <h2 class="Navn"></h2>
-        <p class="Email"></p>
-        <p class="Troende"></p>
+        <img src="" alt="" class="billede" />
+        <h2 class="navn"></h2>
+        <p class="email"></p>
+        <p class="troende"></p>
       </article>
     </template>
     <script>
       const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
-      const mereinfo = {
+      const mereInfo = {
         headers: {
-          "a-apikey": "600fe9211346a1524ff12e31",
+          "x-apikey": "600fe9211346a1524ff12e31",
         },
       };
       async function hentData() {
         const response = await fetch(endpoint, mereInfo);
-        const person = await respons.json();
-        console.log(json);
+        const personer = await response.json();
+        console.log(personer);
         vis(personer);
       }
       function vis(personer) {
@@ -50,13 +51,13 @@
         const skabelon = document.querySelector("template").content;
         personer.forEach((person) => {
           const klon = skabelon.cloneNode(true);
-          klon.querySelector(".Navn").textContent = person.Navn;
-          klon.querySelector("img").src = ".Navn" + person.Navn;
-          klon.querySelector("img").alt = ".Navn".person.Navn;
+          klon.querySelector(".navn").textContent = person.navn;
+          klon.querySelector("img").src = "faces/" + person.billede;
+          klon.querySelector("img").alt = person.billede;
 
-          klon.querySelector(".Email").textContent = person.Email;
-          klon.querySelector(".Navn").textContent = person.Navn;
-          klon.querySelector(".Troende").textContent = person.Troende;
+          klon.querySelector(".email").textContent = person.email;
+          klon.querySelector(".navn").textContent = person.navn;
+          klon.querySelector(".troende").textContent = person.troende;
 
           klon.querySelector("article").style.borderRadius = "1em";
 
